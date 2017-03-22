@@ -17,7 +17,8 @@ function myProcessor(fulfilledTabState) {
   console.log(v2);
 }
 
-getTabState(myCaller, myProcessor);
+// Call getTabState from the utility, passing in 'myProcessor'
+getTabState(myProcessor);
 ```
 ### Sample Tab State
 Note: The Integration Toolkit's [```getPageInfo()```](https://developer.salesforce.com/docs/atlas.en-us.api_console.meta/api_console/sforce_api_console_getpageinfo.htm) will return at minimum ```objectId``` and ```url``` - even for sleeping service console tabs. Active tabs will return more info.
