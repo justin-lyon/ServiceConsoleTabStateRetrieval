@@ -8,17 +8,13 @@ This is a static resource to augment the usage of [Salesforce's Integration Tool
 var v1 = 1;
 var v2 = 2;
 
-// Use the caller to pass through tabState into your own processing handler.
-function myCaller(fulfilledTabState, functionToBeCalled) {
-  functionToBeCalled(fulfilledTabState, v1, v2);
-}
-
-// Now that we've passed all that we need into the processor, get cooking.
-function myProcessor(fulfilledTabState, p1, p2) {
+// pass through an anonymous function that accepts the fulfilled tabState object.
+// this function is called only after the async toolkit functions are resolved or rejected.
+function myProcessor(fulfilledTabState) {
   console.log('we did it!', fulfilledTabState);
   console.log(fulfilledTabState['scc-pt-0'].info.objectId);
-  console.log(p1);
-  console.log(p2);
+  console.log(v1);
+  console.log(v2);
 }
 
 getTabState(myCaller, myProcessor);
