@@ -2,25 +2,22 @@
 	ServiceConsoleTabStateRetriever.js
 
 	Resource to retrieve the Tab State of Service Console.
-	See README.md for sample implementation and Tab State JSON.
+	Tab State object is a JSON Map keyed to PrimaryTabId. Each key is an object of pageInfo and Map of SubtabIds.
  */
-var requestPrimaryTabIds = new Promise(function(resolve, reject) {
-	sforce.console.getPrimaryTabIds(function(result) {
-		if(result.success) {
-			resolve(result.ids);
 
-		} else {
-			var reason = new Error('Primary Tab Id Request Failed.');
-			reject(reason);
-		}
-	});
-});
-
-/**
- * getTabState(processor)
- * @param { processor } [Your anon function to handle the tabState]
- */
 function getTabState(processor) {
+	var requestPrimaryTabIds = new Promise(function(resolve, reject) {
+		sforce.console.getPrimaryTabIds(function(result) {
+			if(result.success) {
+				resolve(result.ids);
+
+			} else {
+				var reason = new Error('Primary Tab Id Request Failed.');
+				reject(reason);
+			}
+		});
+	});
+
 	requestPrimaryTabIds
 		.then(requestAllPrimaryPageInfos)
 		.then(requestAllSubTabs)

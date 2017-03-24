@@ -8,17 +8,20 @@ This is a static resource to augment the usage of [Salesforce's Integration Tool
 var v1 = 1;
 var v2 = 2;
 
-// pass through an anonymous function that accepts the fulfilled tabState object.
-// this function is called only after the async toolkit functions are resolved or rejected.
-function myProcessor(fulfilledTabState) {
-  console.log('we did it!', fulfilledTabState);
-  console.log(fulfilledTabState['scc-pt-0'].info.objectId);
-  console.log(v1);
-  console.log(v2);
+// Use the caller to pass through tabState into your own processing handler.
+function myCaller(fulfilledTabState, functionToBeCalled) {
+  functionToBeCalled(fulfilledTabState, v1, v2);
 }
 
-// Call getTabState from the utility, passing in 'myProcessor'
-getTabState(myProcessor);
+// Now that we've passed all that we need into the processor, get cooking.
+function myProcessor(fulfilledTabState, p1, p2) {
+  console.log('we did it!', fulfilledTabState);
+  console.log(fulfilledTabState['scc-pt-0'].info.objectId);
+  console.log(p1);
+  console.log(p2);
+}
+
+getTabState(myCaller, myProcessor);
 ```
 ### Sample Tab State
 Note: The Integration Toolkit's [```getPageInfo()```](https://developer.salesforce.com/docs/atlas.en-us.api_console.meta/api_console/sforce_api_console_getpageinfo.htm) will return at minimum ```objectId``` and ```url``` - even for sleeping service console tabs. Active tabs will return more info.
@@ -26,37 +29,37 @@ Note: The Integration Toolkit's [```getPageInfo()```](https://developer.salesfor
 {
    "scc-pt-0":{
       "info":{
-         "objectId":"",
-         "url":""
+         "objectId":"001m000000NAZle",
+         "url":"https://icmarc--devr2.cs20.my.salesforce.com/001m000000NAZle"
       },
       "scc-st-0":{
          "info":{
-            "objectId":"",
-            "url":""
+            "objectId":"001m000000NAZle",
+            "url":"https://icmarc--devr2.cs20.my.salesforce.com/001m000000NAZle"
          }
       },
       "scc-st-1":{
          "info":{
-            "objectId":"",
-            "url":""
+            "objectId":"a0Bm0000003gfHF",
+            "url":"https://icmarc--devr2.cs20.my.salesforce.com/a0Bm0000003gfHF"
          }
       }
    },
    "scc-pt-1":{
       "info":{
-         "objectId":"",
-         "url":""
+         "objectId":"001m000000NAYYJ",
+         "url":"https://icmarc--devr2.cs20.my.salesforce.com/001m000000NAYYJ"
       },
       "scc-st-2":{
          "info":{
-            "objectId":"",
-            "url":""
+            "objectId":"001m000000NAYYJ",
+            "url":"https://icmarc--devr2.cs20.my.salesforce.com/001m000000NAYYJ"
          }
       },
       "scc-st-3":{
          "info":{
-            "objectId":"",
-            "url":""
+            "objectId":"a0Bm0000003gfGS",
+            "url":"https://icmarc--devr2.cs20.my.salesforce.com/a0Bm0000003gfGS"
          }
       }
    }
