@@ -1,5 +1,5 @@
 /*
-	ServiceConsoleTabStateRetriever.js
+	ServiceConsoleTabStateRetrieval.js
 
 	Resource to retrieve the Tab State of Service Console.
 	See README for sample implementation and sample Tab State JSON.
