@@ -2,7 +2,7 @@
 	ServiceConsoleTabStateRetriever.js
 
 	Resource to retrieve the Tab State of Service Console.
-	Tab State object is a JSON Map keyed to PrimaryTabId. Each key is an object of pageInfo and Map of SubtabIds.
+	See README for sample implementation and sample Tab State JSON.
  */
 
 function getTabState(processor) {
