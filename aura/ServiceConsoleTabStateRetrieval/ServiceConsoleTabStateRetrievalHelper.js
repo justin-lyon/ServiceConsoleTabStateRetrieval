@@ -1,31 +1,33 @@
 ({
 	getTabState : function(processor) {
-		var requestPrimaryTabIds = new Promise(function(resolve, reject) {
-			sforce.console.getPrimaryTabIds(function(result) {
-				if(result.success) {
-					resolve(result.ids);
+		init();
 
-				} /*else if(result.success && result.ids.length === 1 && result.ids[0] === "") {
-					resolve([]);
-				} */else {
-					var reason = new Error('Primary Tab Id Request Failed.');
-					reject(reason);
-				}
+		function init() {
+			var requestPrimaryTabIds = new Promise(function(resolve, reject) {
+				sforce.console.getPrimaryTabIds(function(result) {
+					if(result.success) {
+						resolve(result.ids);
+
+					} else {
+						var reason = new Error('Primary Tab Id Request Failed.');
+						reject(reason);
+					}
+				});
 			});
-		});
 
-		requestPrimaryTabIds
-			.then(requestAllPrimaryPageInfos)
-			.then(requestAllSubTabs)
-			.then(requestAllSubPageInfos)
-			.then(function(fulfilled) {
+			requestPrimaryTabIds
+				.then(requestAllPrimaryPageInfos)
+				.then(requestAllSubTabs)
+				.then(requestAllSubPageInfos)
+				.then(function(fulfilled) {
 
-				processor(fulfilled);
-			})
-			.catch(function(error) {
+					processor(fulfilled);
+				})
+				.catch(function(error) {
 
-				processor(error);
-			});
+					processor(error);
+				});
+		}
 
 		function requestAllPrimaryPageInfos(primaryTabIds) {
 			var requestedPrimaryTabIds = primaryTabIds.map(function(primaryTabId) {

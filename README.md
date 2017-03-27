@@ -8,17 +8,12 @@ This is a static resource to augment the usage of [Salesforce's Integration Tool
 var v1 = 1;
 var v2 = 2;
 
-// Use the caller to pass through tabState into your own processing handler.
-function myCaller(fulfilledTabState, functionToBeCalled) {
-  functionToBeCalled(fulfilledTabState, v1, v2);
-}
-
-// Now that we've passed all that we need into the processor, get cooking.
-function myProcessor(fulfilledTabState, p1, p2) {
+// Write a function to pass through .getTabState()
+function myProcessor(fulfilledTabState) {
   console.log('we did it!', fulfilledTabState);
   console.log(fulfilledTabState['scc-pt-0'].info.objectId);
-  console.log(p1);
-  console.log(p2);
+  console.log(v1);
+  console.log(v2);
 }
 
 getTabState(myCaller, myProcessor);
@@ -29,37 +24,37 @@ Note: The Integration Toolkit's [```getPageInfo()```](https://developer.salesfor
 {
    "scc-pt-0":{
       "info":{
-         "objectId":"001m000000NAZle",
-         "url":"https://icmarc--devr2.cs20.my.salesforce.com/001m000000NAZle"
+         "objectId":"",
+         "url":""
       },
       "scc-st-0":{
          "info":{
-            "objectId":"001m000000NAZle",
-            "url":"https://icmarc--devr2.cs20.my.salesforce.com/001m000000NAZle"
+            "objectId":"",
+            "url":""
          }
       },
       "scc-st-1":{
          "info":{
-            "objectId":"a0Bm0000003gfHF",
-            "url":"https://icmarc--devr2.cs20.my.salesforce.com/a0Bm0000003gfHF"
+            "objectId":"",
+            "url":""
          }
       }
    },
    "scc-pt-1":{
       "info":{
-         "objectId":"001m000000NAYYJ",
-         "url":"https://icmarc--devr2.cs20.my.salesforce.com/001m000000NAYYJ"
+         "objectId":"",
+         "url":""
       },
       "scc-st-2":{
          "info":{
-            "objectId":"001m000000NAYYJ",
-            "url":"https://icmarc--devr2.cs20.my.salesforce.com/001m000000NAYYJ"
+            "objectId":"",
+            "url":""
          }
       },
       "scc-st-3":{
          "info":{
-            "objectId":"a0Bm0000003gfGS",
-            "url":"https://icmarc--devr2.cs20.my.salesforce.com/a0Bm0000003gfGS"
+            "objectId":"",
+            "url":""
          }
       }
    }
