@@ -24,7 +24,7 @@ function myProcessor(fulfilledTabState) {
   console.log(v2);
 }
 
-acumen.console.getTabState(myCaller, myProcessor);
+acumen.console.getTabState(myProcessor);
 ```
 ---
 ### As a Lightning Super Component
