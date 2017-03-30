@@ -12,7 +12,7 @@ Retrieve the current Tab State from Service Console. See Sample Tab State respon
 ---
 ### Implementations
 
-#### [Static Resource](./Static_Resource/README.md)
+#### [Static Resource](./Static%20Resource/README.md)
 
 #### [Lightning Super Component](./Lightning/README.md)
 
