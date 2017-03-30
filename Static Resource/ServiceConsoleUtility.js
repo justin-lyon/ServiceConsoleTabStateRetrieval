@@ -2,11 +2,17 @@ var acumen = (function(acumen) {
 	'use strict';
 
 	acumen.console = {
-		getTabState : getTabState
+		getTabState : getTabState,
+		getPrimaryTabIdByObjectIdAndUrl : getPrimaryTabIdByObjectIdAndUrl,
+		getSubTabIdByObjectIdAndUrl : getPrimaryTabIdByObjectIdAndUrl
 	};
 
 	return acumen;
 
+	/**
+	* Retrieves the current tab state of the Service Console and executes a callback.
+	* @param {callback} cb - The callback that handles the response.
+	*/
 	function getTabState(processor) {
 		var requestPrimaryTabIds = new Promise(function(resolve, reject) {
 			sforce.console.getPrimaryTabIds(function(result) {
@@ -33,6 +39,18 @@ var acumen = (function(acumen) {
 				processor(error);
 			});
 	}
+
+	/**
+	* Retrieve a single Primary Tab Id using SF Record Id and URL from the Tab State
+	* @param {callback} cb - The callback that handles the response.
+	*/
+	function getPrimaryTabIdByObjectIdAndUrl(recordId, url, callback) {}
+
+	/**
+	* Retrieve a single Sub Tab Id using SF Record Id and URL from the Tab State
+	* @param {callback} cb - The callback that handles the response.
+	*/
+	function getSubTabIdByObjectIdAndUrl(recordId, url, callback) {}
 
 	function requestAllPrimaryPageInfos(primaryTabIds) {
 		var requestedPrimaryTabIds = primaryTabIds.map(function(primaryTabId) {
