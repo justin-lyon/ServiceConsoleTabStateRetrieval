@@ -1,4 +1,4 @@
-#### [Back to Repo README]("../README.md")
+#### [Back to Repo README](../README.md)
 
 ## Lightning Super Component
 By Extending the ```ServiceConsoleUtility``` into your component any ServiceConsoleUtilityHelper.js functions are available to be called from your component's ```helper``` object.
