@@ -3,7 +3,7 @@
 ## JS Static Resource
 This Static Resource is designed to extend the ```acumen``` module. All Service Console Utility functions are within the ```console``` object of the ```acumen``` module.
 
-Include the resource in your page, then call a Public Function through the module ```acumen.console```.
+Include the resource in your page, then call a [Public Function](../README.md#public-functions) through the module ```acumen.console```.
 ```html
 <!-- include the resource in your html -->
 <script src="path/to/ServiceConsoleUtility.js" type="text/javascript" ></script>
