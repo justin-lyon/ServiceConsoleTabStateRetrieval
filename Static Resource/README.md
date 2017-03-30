@@ -1,4 +1,4 @@
-#### [Back to Repo README]("../README.md")
+#### [Back to Repo README](../README.md)
 
 ## JS Static Resource
 This Static Resource is designed to extend the ```acumen``` module. All Service Console Utility functions are within the ```console``` object of the ```acumen``` module.
@@ -23,4 +23,4 @@ function myProcessor(fulfilledTabState) {
 acumen.console.getTabState(myProcessor);
 ```
 
-#### [Back to Repo README]("../README.md")
+#### [Back to Repo README](../README.md)
